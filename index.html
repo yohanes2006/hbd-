@@ -9,45 +9,131 @@
 .nav{height:68px;background:#fff;border-bottom:1px solid #e8ebf2;display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:0;z-index:5}
 .logo{font-weight:800;font-size:22px;color:#2855d9}.logo span{color:#172033}.nav a{color:#526071;text-decoration:none;margin-left:22px;font-size:14px}
 .hero{background:linear-gradient(135deg,#2855d9,#5d7ff0);padding:75px 20px 95px;text-align:center;color:#fff}
-.hero h1{font-size:42px;margin:0 0 14px}.hero p{margin:0 auto 28px;max-width:650px;color:#e9eeff}
+.hero h1{font-size:42px;margin:0 0 14px}.hero p{margin:0 auto 28px;max-width:700px;color:#e9eeff}
 .search{max-width:720px;margin:auto;background:#fff;border-radius:16px;padding:9px;display:flex;box-shadow:0 15px 35px #17378c55}
-.search select,.search input{border:0;outline:0;background:#fff;font-size:16px}.search select{padding:0 10px;color:#566274}.search input{flex:1;padding:14px}.search button{border:0;border-radius:11px;background:#2855d9;color:#fff;padding:0 24px;font-weight:700;cursor:pointer}
+.search select,.search input{border:0;outline:0;background:#fff;font-size:16px}.search select{padding:0 10px;color:#566274}.search input{flex:1;padding:14px}.search button,.primary{border:0;border-radius:11px;background:#2855d9;color:#fff;padding:13px 24px;font-weight:700;cursor:pointer}
 .wrap{max-width:1000px;margin:-42px auto 60px;padding:0 20px;position:relative}.card{background:#fff;border-radius:18px;padding:25px;box-shadow:0 10px 30px #1d2b4512;margin-bottom:18px}
 .result{display:flex;align-items:center;gap:15px;padding:15px 0;border-bottom:1px solid #edf0f5}.result:last-child{border:0}.avatar{width:46px;height:46px;border-radius:50%;background:#e7edff;color:#2855d9;display:grid;place-items:center;font-weight:800}.name{font-weight:800}.number{color:#687588;font-size:13px}.tag{margin-left:auto;background:#e8f8ef;color:#16834c;padding:7px 10px;border-radius:20px;font-size:12px;font-weight:700}
 .info{color:#657184;font-size:13px;line-height:1.6}.empty{text-align:center;padding:30px;color:#718096}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700;color:#455268}.field input,.field select{border:1px solid #dfe4ec;border-radius:10px;padding:12px;outline:0;font-size:14px}.field input:focus,.field select:focus{border-color:#2855d9}.check{display:flex;gap:9px;align-items:flex-start;margin:15px 0;color:#586579;font-size:13px;line-height:1.5}.check input{margin-top:3px}.notice{background:#f0f5ff;border:1px solid #d9e4ff;border-radius:12px;padding:12px;color:#4c5f82;font-size:13px;line-height:1.5;margin-bottom:18px}
 footer{text-align:center;color:#8791a1;font-size:12px;padding:30px}
-@media(max-width:600px){.hero h1{font-size:31px}.search{flex-wrap:wrap}.search select,.search input{width:100%;padding:12px}.search button{width:100%;padding:13px;margin-top:5px}.nav{padding:0 5%}.nav a{margin-left:10px}}
+@media(max-width:600px){.hero h1{font-size:31px}.search{flex-wrap:wrap}.search select,.search input{width:100%;padding:12px}.search button{width:100%;padding:13px;margin-top:5px}.nav{padding:0 5%}.nav a{margin-left:10px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="logo">Call<span>Check</span></div><div><a href="#cara">Cara Kerja</a><a href="#privasi">Privasi</a></div></nav>
+<nav class="nav"><div class="logo">Call<span>Check</span></div><div><a href="#tambah">Tambah Data</a><a href="#cara">Cara Kerja</a><a href="#privasi">Privasi</a></div></nav>
+
 <section class="hero">
 <h1>Cek nomor telepon dengan mudah</h1>
-<p>Masukkan nomor untuk melihat data contoh, label, dan status nomor dalam tampilan seperti layanan identifikasi penelepon.</p>
+<p>Masukkan nomor untuk melihat data yang memang tersedia di database CallCheck.</p>
 <div class="search">
 <select id="country"><option value="+62">🇮🇩 +62</option></select>
 <input id="phone" placeholder="Contoh: 81234567890" inputmode="tel">
 <button onclick="searchNumber()">Cari Nomor</button>
 </div>
 </section>
+
 <main class="wrap">
 <div class="card" id="results"><div class="empty">Masukkan nomor untuk memulai pencarian.</div></div>
-<div class="card" id="cara"><h2>Cara kerja</h2><p class="info">Website ini adalah demo identifikasi nomor. Data yang ditampilkan berasal dari data contoh yang disimpan di website, bukan database pribadi GetContact dan bukan hasil pencarian data pribadi orang lain.</p></div>
-<div class="card" id="privasi"><h2>Privasi & keamanan</h2><p class="info">Jangan masukkan nomor atau informasi pribadi orang lain tanpa izin. Versi ini tidak mengumpulkan, menjual, atau membagikan data pribadi.</p></div>
+
+<div class="card" id="tambah">
+<h2>➕ Tambahkan data</h2>
+<div class="notice"><b>Aturan penting:</b> hanya tambahkan data milikmu sendiri atau data yang memang kamu punya izin untuk dibagikan. Jangan memasukkan data pribadi orang lain tanpa izin.</div>
+<div class="form-grid">
+<div class="field">
+<label for="addPhone">Nomor telepon</label>
+<input id="addPhone" placeholder="081234567890" inputmode="tel">
+</div>
+<div class="field">
+<label for="addName">Nama</label>
+<input id="addName" placeholder="Nama yang ingin ditampilkan">
+</div>
+<div class="field">
+<label for="addLabel">Label</label>
+<input id="addLabel" placeholder="Contoh: Pribadi, Bisnis, Teman">
+</div>
+<div class="field">
+<label for="addStatus">Status</label>
+<select id="addStatus">
+<option value="Aman">Aman</option>
+<option value="Terverifikasi">Terverifikasi</option>
+<option value="Perlu dicek">Perlu dicek</option>
+</select>
+</div>
+</div>
+<label class="check"><input type="checkbox" id="consent"> <span>Saya memastikan data ini milik saya atau saya memiliki izin untuk membagikannya, dan saya setuju data tersebut disimpan di browser ini untuk fitur pencarian.</span></label>
+<button class="primary" onclick="addNumber()">Simpan Data</button>
+<p id="saveMessage" class="info"></p>
+</div>
+
+<div class="card" id="cara"><h2>Cara kerja</h2><p class="info">Data contoh dan data yang kamu tambahkan akan digunakan oleh website ini untuk pencarian. Versi ini menyimpan data tambahan di <b>browser perangkatmu</b> menggunakan localStorage, jadi data tersebut belum menjadi database online bersama.</p></div>
+
+<div class="card" id="privasi"><h2>Privasi & keamanan</h2><p class="info">Jangan masukkan nomor, nama, atau informasi pribadi orang lain tanpa izin. Jangan gunakan fitur ini untuk mencari atau menyebarkan data pribadi seseorang. Jika nanti memakai database online, akses database harus dibatasi dengan aturan keamanan yang sesuai.</p></div>
 </main>
+
 <footer>© 2026 CallCheck • Demo website GitHub Pages</footer>
+
 <script>
 const demo={
 "6281234567890":{name:"Contoh Kontak",labels:["Teman","Contoh"],status:"Aman"},
 "6289876543210":{name:"Nomor Contoh 2",labels:["Bisnis"],status:"Terverifikasi"}
 };
+
+function normalizePhone(value){
+ const raw=value.replace(/\D/g,"");
+ if(!raw)return "";
+ return raw.startsWith("0")?"62"+raw.slice(1):raw.startsWith("62")?raw:"62"+raw;
+}
+
+function getUserData(){
+ try{return JSON.parse(localStorage.getItem("callcheckData")||"{}")}catch(e){return {}}
+}
+
 function searchNumber(){
- const raw=document.getElementById("phone").value.replace(/\D/g,"");
- const key=raw.startsWith("0")?"62"+raw.slice(1):raw.startsWith("62")?raw:"62"+raw;
- const box=document.getElementById("results"),d=demo[key];
- if(!raw){box.innerHTML='<div class="empty">Masukkan nomor terlebih dahulu.</div>';return}
- if(!d){box.innerHTML='<div class="empty"><h3>Nomor belum ada di demo</h3><p>Belum ada data contoh untuk nomor ini.</p></div>';return}
- box.innerHTML='<div class="result"><div class="avatar">'+d.name.charAt(0)+'</div><div><div class="name">'+d.name+'</div><div class="number">+'+key+'</div></div><span class="tag">'+d.status+'</span></div><div class="info"><b>Label:</b> '+d.labels.join(", ")+'</div>';
+ const key=normalizePhone(document.getElementById("phone").value);
+ const box=document.getElementById("results");
+ const userData=getUserData();
+ const d=userData[key]||demo[key];
+
+ if(!key){box.innerHTML='<div class="empty">Masukkan nomor terlebih dahulu.</div>';return}
+
+ if(!d){
+   box.innerHTML='<div class="empty"><h3>Nomor belum ditemukan</h3><p>Belum ada data untuk nomor ini. Jika nomor tersebut milikmu atau kamu punya izin, kamu bisa menambahkannya melalui formulir di bawah.</p></div>';
+   return;
+ }
+
+ box.innerHTML='<div class="result"><div class="avatar">'+escapeHtml(d.name.charAt(0).toUpperCase())+'</div><div><div class="name">'+escapeHtml(d.name)+'</div><div class="number">+'+key+'</div></div><span class="tag">'+escapeHtml(d.status)+'</span></div><div class="info"><b>Label:</b> '+d.labels.map(escapeHtml).join(", ")+'</div>';
+}
+
+function addNumber(){
+ const phone=normalizePhone(document.getElementById("addPhone").value);
+ const name=document.getElementById("addName").value.trim();
+ const label=document.getElementById("addLabel").value.trim();
+ const status=document.getElementById("addStatus").value;
+ const consent=document.getElementById("consent").checked;
+ const msg=document.getElementById("saveMessage");
+
+ if(!phone||!name||!label){msg.textContent="Lengkapi nomor, nama, dan label terlebih dahulu.";return}
+ if(!consent){msg.textContent="Centang pernyataan izin terlebih dahulu.";return}
+
+ const data=getUserData();
+ data[phone]={name:name,labels:label.split(",").map(x=>x.trim()).filter(Boolean),status:status};
+ localStorage.setItem("callcheckData",JSON.stringify(data));
+
+ msg.textContent="✓ Data berhasil disimpan di browser ini.";
+ document.getElementById("phone").value=phone;
+ searchNumber();
+
+ document.getElementById("addPhone").value="";
+ document.getElementById("addName").value="";
+ document.getElementById("addLabel").value="";
+ document.getElementById("consent").checked=false;
+}
+
+function escapeHtml(value){
+ return String(value).replace(/[&<>"']/g,function(c){
+   return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c];
+ });
 }
 </script>
 </body>
